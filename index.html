@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Student Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <button id="theme-toggle" aria-label="Toggle Light and Dark Mode">
+    ☀️ press me
+  </button>
+
+  <header>
+    <h1>Charles M. Prosia</h1>
+    <p>Information Technology Student</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About Me</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certificate">Certificate</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <section id="home">
+      <img class="portfolio-photo" src="assets/IMG_0937.JPG" alt="A student photo of Charles" />
+      <div style="text-align: center;">
+        <h2>Hello, I am Charles M. Prosia</h2>
+        <p>Welcome to my student portfolio website!</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <ul>
+        <li><strong>Course:</strong> Bachelor of Science in Information Technology</li>
+        <li><strong>Year Level:</strong> 1st Year College</li>
+        <li><strong>Interests:</strong> Making offline or online games</li>
+        <li><strong>Goal:</strong> To develop my own game</li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <div>
+        <h2>My Skills</h2>
+        <ul>
+          <li>Web developing</li>
+          <li>Problem solving</li>
+          <li>Fast learning</li>
+          <li>Math solving</li>
+          <li>Finding problem</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="portfolio-row">
+      <section id="projects" class="card">
+        <h2>My Projects</h2>
+        <div id="certificate-wrapper">
+          <div style="max-width: 300px;">
+            <div><h3>Website Store</h3></div>
+            <p>A local pasalubong center offering traditional local delicacies and specialty items, designed to make it
+              convenient for customers to discover and browse local products.</p>
+            <img class="portfolio-photo" src="assets/babysealweb.png" alt="Website store project screenshot" />
+          </div>
+          <div style="max-width: 300px;">
+            <div><h3>Personal Website</h3></div>
+            <p>A professional collection showcasing my academic background, personal goals in game development,
+              technical skills, and completed creative projects.</p>
+            <img class="portfolio-photo" src="assets/websiteportfolio.png" alt="Personal website screenshot" />
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="certificate">
+      <h2>My Certificate</h2>
+      <div id="certificate-wrapper">
+        <img class="portfolio-photo" src="assets/IMG_0878.PNG" alt="Certificate 1 of Charles" />
+        <img class="portfolio-photo" src="assets/IMG_0879.PNG" alt="Certificate 2 of Charles" />
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>My Contact</h2>
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/unkillable.charles" target="_blank">Facebook:
+            https://www.facebook.com/unkillable.charles</a>
+        </li>
+        <li>
+          <a href="mailto:2601111226@student.buksu.edu.ph">Email: 2601111226@student.buksu.edu.ph</a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p> Charles M. Prosia 2026</p>
+  </footer>
+
+  <div id="image-modal" class="modal">
+    <span class="close-modal">×</span>
+    <img class="modal-content" id="modal-img" alt="Fullscreen View" />
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("theme-toggle");
+      const rootElement = document.documentElement;
+
+      toggleBtn.addEventListener("click", () => {
+        rootElement.classList.toggle("light-mode");
+
+        if (rootElement.classList.contains("light-mode")) {
+          toggleBtn.textContent = "🌙 ";
+        } else {
+          toggleBtn.textContent = "☀️ ";
+        }
+      });
+
+      const modal = document.getElementById("image-modal");
+      const modalImg = document.getElementById("modal-img");
+      const photos = document.querySelectorAll(".portfolio-photo");
+      const closeModal = document.querySelector(".close-modal");
+
+      photos.forEach((photo) => {
+        photo.addEventListener("click", () => {
+          modal.style.display = "flex";
+          modalImg.src = photo.src;
+        });
+      });
+
+      function closeZoomModal() {
+        modal.style.display = "none";
+      }
+
+      closeModal.addEventListener("click", closeZoomModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeZoomModal();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
